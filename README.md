@@ -41,18 +41,16 @@ Health and Wellness Foundation, Inc. (Volunteer Project)
 
 ## Project Workflow
 
-ClinicalTrials.gov API
-        ↓
-Data Extraction        
-        ↓
-Data Cleaning & Normalization
-        ↓
-Eligibility & Demographic Processing
-        ↓
-MongoDB Storage
-        ↓
+ClinicalTrials.gov API  
+↓  
+Data Extraction  
+↓  
+Data Cleaning & Normalization  
+↓  
+Eligibility & Demographic Processing  
+↓  
+MongoDB Storage  
+↓  
 Research-Ready Dataset
-
-## Impact
 
 This project transformed complex clinical trial data into structured datasets suitable for healthcare research, patient matching, diversity analysis, and analytics applications.
