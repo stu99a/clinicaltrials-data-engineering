@@ -43,7 +43,7 @@ Health and Wellness Foundation, Inc. (Volunteer Project)
 
 ClinicalTrials.gov API
         ↓
-Data Extraction
+Data Extraction        
         ↓
 Data Cleaning & Normalization
         ↓
