@@ -1,4 +1,4 @@
-# ClinicalTrials.gov Neurofibromatosis ETL Pipeline
+# ClinicalTrials.gov Neurofibromatosis Eligibility Intelligence Pipeline
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
 ![API](https://img.shields.io/badge/Data%20Source-ClinicalTrials.gov-orange)
@@ -118,7 +118,7 @@ clinicaltrials-data-engineering/
 ├── README.md
 └── images/
 ```
-## Sample Output
+## Engineered Dataset Preview
 
 The pipeline transforms complex, nested ClinicalTrials.gov API responses into a structured dataset containing **53 analysis-ready features**.
 
