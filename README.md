@@ -1,4 +1,4 @@
-# ClinicalTrials.gov Neurofibromatosis Data Engineering
+# ClinicalTrials.gov Neurofibromatosis ETL Pipeline
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
 ![API](https://img.shields.io/badge/Data%20Source-ClinicalTrials.gov-orange)
@@ -7,17 +7,18 @@
 
 ## Table of Contents
 
-- Project Overview
-- Objectives
-- Pipeline Architecture
-- Technology Stack
-- Features
-- Workflow
-- Project Structure
-- Sample Output
-- Installation
-- Usage
-- Future Improvements
+- [Overview](#overview)
+- [Objectives](#objectives)
+- [Pipeline Architecture](#pipeline-architecture)
+- [Technology Stack](#technology-stack)
+- [Key Features](#key-features)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Project Workflow](#project-workflow)
+- [Project Structure](#project-structure)
+- [Sample Output](#sample-output)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Future Improvements](#future-improvements)
 
 ## Overview
 
@@ -65,36 +66,54 @@ The pipeline automates the retrieval and transformation of Neurofibromatosis cli
 
 ## Key Features
 
-- Automated clinical trial data extraction
-- API pagination handling
-- Eligibility criteria parsing
-- Demographic data extraction
-- Data normalization and cleaning
-- MongoDB integration
-- Research-ready dataset generation
+- **Automated Data Retrieval** – Extracts Neurofibromatosis clinical trial records directly from the ClinicalTrials.gov API.
+
+- **API Pagination** – Retrieves complete datasets across multiple API pages.
+
+- **JSON Parsing** – Converts complex nested API responses into structured records.
+
+- **Eligibility Processing** – Extracts participant eligibility criteria into analysis-ready fields.
+
+- **Demographic Extraction** – Standardizes age, sex, and participant characteristics.
+
+- **Data Normalization** – Cleans and standardizes inconsistent source values.
+
+- **MongoDB Integration** – Stores processed records for flexible querying and downstream applications.
+
+- **Research-Ready Output** – Produces structured datasets suitable for healthcare analytics and patient-matching workflows.
 
 ## Skills Demonstrated
 
-- Data Engineering
-- API Integration
-- Data Transformation
-- Healthcare Data Processing
+### Data Engineering
+
+- ETL pipeline development
+- Data transformation
+- Data normalization
+- Data validation
+
+### Data Acquisition
+
+- REST API integration
+- JSON processing
+- API pagination
+
+### Database
+
 - MongoDB
-- Python Programming
-- Data Cleaning
+- Document database design
 
-## Project Workflow
+### Programming
 
-ClinicalTrials.gov API  
-↓  
-Data Extraction  
-↓  
-Data Cleaning & Normalization  
-↓  
-Eligibility & Demographic Processing  
-↓  
-MongoDB Storage  
-↓  
-Research-Ready Dataset
+- Python
+- Pandas
+## Workflow Description
 
-This project transformed complex clinical trial data into structured datasets suitable for healthcare research, patient matching, diversity analysis, and analytics applications.
+1. Retrieve clinical trial data from the ClinicalTrials.gov API.
+
+2. Parse nested JSON responses into structured records.
+
+3. Normalize demographic and eligibility information.
+
+4. Store processed records in MongoDB.
+
+5. Export structured datasets for downstream analytics and healthcare research.
