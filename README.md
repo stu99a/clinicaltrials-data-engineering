@@ -22,8 +22,6 @@
 
 ## Overview
 
-### ClinicalTrials.gov Neurofibromatosis Data Engineering Pipeline
-
 A Python-based data engineering pipeline that extracts, transforms, and structures Neurofibromatosis clinical trial data from the ClinicalTrials.gov API into analysis-ready datasets.
 
 The project demonstrates an end-to-end ETL workflow, including automated data extraction, JSON parsing, data normalization, eligibility criteria processing, demographic feature extraction, and structured data storage. The resulting datasets are designed to support healthcare research, patient matching, diversity analysis, and downstream analytics.
@@ -41,6 +39,7 @@ The project was developed to:
 - Demonstrate practical data engineering techniques using Python.
 
 ## Pipeline Architecture
+```text
                     ClinicalTrials.gov API
                               │
                               ▼
@@ -76,6 +75,7 @@ The project was developed to:
                ┌──────────────┴──────────────┐
                ▼                             ▼
       clinical_trials_parsed.csv     MongoDB (Optional)
+```
 
 ## Technology Stack
 
@@ -144,19 +144,20 @@ The project was developed to:
 5. Export structured datasets for downstream analytics and healthcare research.
 
 ## Project Structure
-
+```text
 clinicaltrials-data-engineering/
 ├── clinical_trials_pipeline.py
 ├── clinical_trials_parsed.csv
 ├── requirements.txt
 ├── README.md
 └── images/
-
+```
 ## Sample Output
 
 The pipeline transforms complex, nested ClinicalTrials.gov API responses into a structured dataset containing **53 analysis-ready features**.
 
 ### Console Output
+```text
 Fetching trials...
 Fetched 40 studies...
 Parsing trials...
@@ -169,7 +170,7 @@ Columns generated : 53
 Output file       : clinical_trials_parsed.csv
 
 MongoDB upload disabled.
-
+```
 Below is a representative preview of the engineered dataset.
 
 | NCT ID      | Age Range | Gender | NF1 | Pregnancy | Medication | Surgery | Comorbidity |
@@ -200,7 +201,7 @@ The pipeline enriches raw ClinicalTrials.gov data by transforming unstructured e
 | `Comorbidity_source_text`  | Identifies medical conditions detected within the exclusion criteria.                                       |
 
 ## Installation
-
+```text
 git clone ...
 cd clinicaltrials-data-engineering
 pip install -r requirements.txt
@@ -214,3 +215,4 @@ python clinical_trials_pipeline.py
 - Schedule automatic data refreshes with GitHub Actions.
 - Add unit tests for parsing functions.
 - Containerize the pipeline with Docker.
+```
