@@ -214,4 +214,3 @@ python clinical_trials_pipeline.py
 - Schedule automatic data refreshes with GitHub Actions.
 - Add unit tests for parsing functions.
 - Containerize the pipeline with Docker.
-- 
