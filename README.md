@@ -40,43 +40,8 @@ The project was developed to:
 - Demonstrate practical data engineering techniques using Python.
 
 ## Pipeline Architecture
-```text
-                    ClinicalTrials.gov API
-                              │
-                              ▼
-                     TrialFetcher Class
-                  (Pagination + API Calls)
-                              │
-                              ▼
-                     Raw JSON Study Records
-                              │
-                              ▼
-                     TrialParser Class
-      ┌──────────────────────────────────────────┐
-      │                                          │
-      │ Basic Study Information                  │
-      │ Principal Investigator                   │
-      │ Age Normalization                        │
-      │ Gender Extraction                        │
-      │ Eligibility Parsing                      │
-      │ Pregnancy Detection                      │
-      │ Race Extraction                          │
-      │ Condition Classification                 │
-      │ Family History Detection                 │
-      │ Medication Detection                     │
-      │ Drug Extraction                          │
-      │ Surgery Detection                        │
-      │ Comorbidity Extraction                   │
-      └──────────────────────────────────────────┘
-                              │
-                              ▼
-                    Structured Pandas DataFrame
-                       (53 Engineered Features)
-                              │
-               ┌──────────────┴──────────────┐
-               ▼                             ▼
-      clinical_trials_parsed.csv     MongoDB (Optional)
-```
+
+![Pipeline Architecture](images/pipeline_architecture.png)
 
 ## Technology Stack
 
@@ -158,27 +123,12 @@ clinicaltrials-data-engineering/
 The pipeline transforms complex, nested ClinicalTrials.gov API responses into a structured dataset containing **53 analysis-ready features**.
 
 ### Console Output
-```text
-Fetching trials...
-Fetched 40 studies...
-Parsing trials...
 
-CSV export completed successfully!
+![Pipeline Architecture](images/terminal_output.png)
 
-Studies retrieved : 40
-Studies processed : 40
-Columns generated : 53
-Output file       : clinical_trials_parsed.csv
-
-MongoDB upload disabled.
-```
 ### Preview of the engineered dataset.
 
-| NCT ID      | Age Range | Gender | NF1 | Pregnancy | Medication | Surgery | Comorbidity |
-| ----------- | --------- | ------ | --- | --------- | ---------- | ------- | ----------- |
-| NCT04439318 | ≥18       | ALL    | YES | NO        | YES        | YES     | YES         |
-| NCT05891847 | ≥3        | ALL    | YES | NO        | NO         | NO      | YES         |
-| NCT03872427 | ≥18       | ALL    | NO  | NO        | YES        | NO      | YES         |
+![Pipeline Architecture](images/dataframe_preview.png)
 
 The complete dataset also includes structured fields for principal investigators, institutions, demographic eligibility, race mentions, family history, medication use, surgical procedures, and comorbidity extraction.
 
