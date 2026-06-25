@@ -1,14 +1,43 @@
 # ClinicalTrials.gov Neurofibromatosis Data Engineering
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
+![API](https://img.shields.io/badge/Data%20Source-ClinicalTrials.gov-orange)
+![ETL](https://img.shields.io/badge/Pipeline-ETL-success)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+## Table of Contents
+
+- Project Overview
+- Objectives
+- Pipeline Architecture
+- Technology Stack
+- Features
+- Workflow
+- Project Structure
+- Sample Output
+- Installation
+- Usage
+- Future Improvements
 
 ## Overview
 
-This project involved developing a Python-based data engineering pipeline to extract, process, and structure Neurofibromatosis clinical trial data from the ClinicalTrials.gov API.
+# ClinicalTrials.gov Neurofibromatosis Data Engineering Pipeline
 
-The pipeline automates data retrieval, eligibility criteria parsing, demographic extraction, data normalization, and MongoDB storage to create research-ready datasets for healthcare analytics and patient-matching applications.
+A Python-based data engineering pipeline that extracts, transforms, and structures Neurofibromatosis clinical trial data from the ClinicalTrials.gov API into analysis-ready datasets.
 
-## Organization
+The project demonstrates an end-to-end ETL workflow, including automated data extraction, JSON parsing, data normalization, eligibility criteria processing, demographic feature extraction, and structured data storage. The resulting datasets are designed to support healthcare research, patient matching, diversity analysis, and downstream analytics.
 
-Health and Wellness Foundation, Inc. (Volunteer Project)
+**Organization:** Health and Wellness Foundation, Inc. (Volunteer Project)
+
+## Objectives
+
+The project was developed to:
+
+- Automate retrieval of Neurofibromatosis clinical trial data.
+- Transform complex API responses into structured datasets.
+- Standardize demographic and eligibility information.
+- Support healthcare research and patient-matching initiatives.
+- Demonstrate practical data engineering techniques using Python.
 
 ## Technologies Used
 
