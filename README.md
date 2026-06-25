@@ -41,17 +41,41 @@ The project was developed to:
 - Demonstrate practical data engineering techniques using Python.
 
 ## Pipeline Architecture
-
-```mermaid
-flowchart TD
-    A[ClinicalTrials.gov API] --> B[Data Fetcher]
-    B --> C[JSON Parser]
-    C --> D[Data Cleaning & Normalization]
-    D --> E[Eligibility & Demographic Extraction]
-    E --> F[Structured Dataset]
-    F --> G[MongoDB]
-```
-The pipeline automates the retrieval and transformation of Neurofibromatosis clinical trial data from the ClinicalTrials.gov API. Raw JSON responses are parsed, cleaned, and normalized before extracting eligibility criteria and demographic attributes. The processed data is then stored in MongoDB, producing structured datasets suitable for healthcare research, patient matching, and downstream analytics.
+                    ClinicalTrials.gov API
+                              │
+                              ▼
+                     TrialFetcher Class
+                  (Pagination + API Calls)
+                              │
+                              ▼
+                     Raw JSON Study Records
+                              │
+                              ▼
+                     TrialParser Class
+      ┌──────────────────────────────────────────┐
+      │                                          │
+      │ Basic Study Information                  │
+      │ Principal Investigator                   │
+      │ Age Normalization                        │
+      │ Gender Extraction                        │
+      │ Eligibility Parsing                      │
+      │ Pregnancy Detection                      │
+      │ Race Extraction                          │
+      │ Condition Classification                 │
+      │ Family History Detection                 │
+      │ Medication Detection                     │
+      │ Drug Extraction                          │
+      │ Surgery Detection                        │
+      │ Comorbidity Extraction                   │
+      └──────────────────────────────────────────┘
+                              │
+                              ▼
+                    Structured Pandas DataFrame
+                       (53 Engineered Features)
+                              │
+               ┌──────────────┴──────────────┐
+               ▼                             ▼
+      clinical_trials_parsed.csv     MongoDB (Optional)
 
 ## Technology Stack
 
@@ -106,6 +130,7 @@ The pipeline automates the retrieval and transformation of Neurofibromatosis cli
 
 - Python
 - Pandas
+
 ## Workflow Description
 
 1. Retrieve clinical trial data from the ClinicalTrials.gov API.
@@ -117,3 +142,76 @@ The pipeline automates the retrieval and transformation of Neurofibromatosis cli
 4. Store processed records in MongoDB.
 
 5. Export structured datasets for downstream analytics and healthcare research.
+
+## Project Structure
+
+clinicaltrials-data-engineering/
+├── clinical_trials_pipeline.py
+├── clinical_trials_parsed.csv
+├── requirements.txt
+├── README.md
+└── images/
+
+## Sample Output
+
+The pipeline transforms complex, nested ClinicalTrials.gov API responses into a structured dataset containing **53 analysis-ready features**.
+
+### Console Output
+Fetching trials...
+Fetched 40 studies...
+Parsing trials...
+
+CSV export completed successfully!
+
+Studies retrieved : 40
+Studies processed : 40
+Columns generated : 53
+Output file       : clinical_trials_parsed.csv
+
+MongoDB upload disabled.
+
+Below is a representative preview of the engineered dataset.
+
+| NCT ID      | Age Range | Gender | NF1 | Pregnancy | Medication | Surgery | Comorbidity |
+| ----------- | --------- | ------ | --- | --------- | ---------- | ------- | ----------- |
+| NCT04439318 | ≥18       | ALL    | YES | NO        | YES        | YES     | YES         |
+| NCT05891847 | ≥3        | ALL    | YES | NO        | NO         | NO      | YES         |
+| NCT03872427 | ≥18       | ALL    | NO  | NO        | YES        | NO      | YES         |
+
+The complete dataset also includes structured fields for principal investigators, institutions, demographic eligibility, race mentions, family history, medication use, surgical procedures, and comorbidity extraction.
+
+## Data Dictionary
+
+The pipeline enriches raw ClinicalTrials.gov data by transforming unstructured eligibility criteria into structured, analysis-ready features.
+
+| Field                      | Description                                                                                                 |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `Age_range`                | Normalized participant age range derived from minimum and maximum eligibility ages.                         |
+| `Pregnancy_reason`         | Indicates whether pregnancy is explicitly included, excluded, or not mentioned in the eligibility criteria. |
+| `Race_reason`              | Context extracted from eligibility text to identify race or ethnicity-related inclusion criteria.           |
+| `Neurofibromatosis Type 1` | Indicates whether the study specifically targets Neurofibromatosis Type 1 (NF1).                            |
+| `Neurofibromatosis Type 2` | Indicates whether the study specifically targets Neurofibromatosis Type 2 (NF2).                            |
+| `Schwannomatosis`          | Identifies studies involving Schwannomatosis.                                                               |
+| `Under_Investigation`      | Flags studies where Neurofibromatosis-related conditions are described as investigational.                  |
+| `Family_source_text`       | Extracted eligibility text referencing family history or affected relatives.                                |
+| `Medication_source_text`   | Captures medication-related eligibility requirements from the study criteria.                               |
+| `Drug_source_text`         | Lists therapeutic agents identified within the eligibility text.                                            |
+| `Surgery_source_text`      | Captures references to surgical procedures relevant to study eligibility.                                   |
+| `Comorbidity_source_text`  | Identifies medical conditions detected within the exclusion criteria.                                       |
+
+## Installation
+
+git clone ...
+cd clinicaltrials-data-engineering
+pip install -r requirements.txt
+python clinical_trials_pipeline.py
+
+## Future Improvements
+
+- Add support for additional disease conditions.
+- Export to PostgreSQL in addition to MongoDB.
+- Package the parser as a reusable Python library.
+- Schedule automatic data refreshes with GitHub Actions.
+- Add unit tests for parsing functions.
+- Containerize the pipeline with Docker.
+- 
