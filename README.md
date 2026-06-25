@@ -16,9 +16,10 @@
 - [Project Workflow](#project-workflow)
 - [Project Structure](#project-structure)
 - [Sample Output](#sample-output)
+- [Data Dictionary](#data-dictionary)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Future Improvements](#future-improvements)
+- [Usage](#usage)
 
 ## Overview
 
@@ -139,9 +140,9 @@ The project was developed to:
 
 3. Normalize demographic and eligibility information.
 
-4. Store processed records in MongoDB.
+4. Export the processed records as a structured CSV dataset.
 
-5. Export structured datasets for downstream analytics and healthcare research.
+5. Optionally upload the processed records to MongoDB if configured.
 
 ## Project Structure
 ```text
@@ -171,7 +172,7 @@ Output file       : clinical_trials_parsed.csv
 
 MongoDB upload disabled.
 ```
-Below is a representative preview of the engineered dataset.
+### Preview of the engineered dataset.
 
 | NCT ID      | Age Range | Gender | NF1 | Pregnancy | Medication | Surgery | Comorbidity |
 | ----------- | --------- | ------ | --- | --------- | ---------- | ------- | ----------- |
@@ -201,12 +202,12 @@ The pipeline enriches raw ClinicalTrials.gov data by transforming unstructured e
 | `Comorbidity_source_text`  | Identifies medical conditions detected within the exclusion criteria.                                       |
 
 ## Installation
-```text
-git clone ...
+```bash
+git clone https://github.com/stu99a/clinicaltrials-data-engineering.git
 cd clinicaltrials-data-engineering
 pip install -r requirements.txt
 python clinical_trials_pipeline.py
-
+```
 ## Future Improvements
 
 - Add support for additional disease conditions.
@@ -215,4 +216,22 @@ python clinical_trials_pipeline.py
 - Schedule automatic data refreshes with GitHub Actions.
 - Add unit tests for parsing functions.
 - Containerize the pipeline with Docker.
+
+## Usage
+
+Run the pipeline to retrieve the latest active Neurofibromatosis clinical trials and generate a structured CSV dataset.
+
+```bash
+python clinical_trials_pipeline.py
 ```
+
+The pipeline will:
+
+- Retrieve studies from the ClinicalTrials.gov API.
+- Parse and normalize eligibility criteria.
+- Generate a structured dataset (`clinical_trials_parsed.csv`).
+- Optionally upload records to MongoDB if configured.
+
+## License
+
+This project is licensed under the MIT License.
