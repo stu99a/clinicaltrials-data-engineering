@@ -27,7 +27,7 @@ A Python-based data engineering pipeline that extracts, transforms, and structur
 
 The project demonstrates an end-to-end ETL workflow, including automated data extraction, JSON parsing, data normalization, eligibility criteria processing, demographic feature extraction, and structured data storage. The resulting datasets are designed to support healthcare research, patient matching, diversity analysis, and downstream analytics.
 
-**Organization:** Health and Wellness Foundation, Inc. (Volunteer Project)
+**Organization:** iHealth and Wellness Foundation, Inc. (Volunteer Project)
 
 ## Objectives
 
