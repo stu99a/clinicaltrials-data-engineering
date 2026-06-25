@@ -105,7 +105,7 @@ The project was developed to:
 
 - **MongoDB Integration** – Stores processed records for flexible querying and downstream applications.
 
-- **Research-Ready Output** – Produces structured datasets suitable for healthcare analytics and patient-matching workflows.
+- **Analysis-Ready Dataset** – Produces structured datasets suitable for healthcare analytics and patient-matching workflows.
 
 ## Skills Demonstrated
 
