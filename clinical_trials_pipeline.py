@@ -994,13 +994,18 @@ if __name__ == "__main__":
 
     # === MongoDB Output ===
     # Upserts the parsed clinical trials data into MongoDB 
-    MONGO_URI = os.getenv("MONGO_URI")  # Ensure this is set in your environment
-    mongo = MongoWriter(
-        uri=MONGO_URI,
-        db_name="iHealth_Dev",
-        collection_name="Clinical Trial-Output"
-    )
+    #MONGO_URI = os.getenv("MONGO_URI")  # Ensure this is set in your environment
+    #mongo = MongoWriter(
+        #uri=MONGO_URI,
+        #db_name="iHealth_Dev",
+        #collection_name="Clinical Trial-Output"
+   #)
 
-    mongo.upsert_trials(parsed_trials)
+    #mongo.upsert_trials(parsed_trials)
+
+    print("\nPipeline completed successfully!")
+    print(f"Studies retrieved: {len(raw_trials)}")
+    print(f"Columns generated: {len(df.columns)}")
+    print(f"Output file: clinical_trials_parsed.csv\n")
 
     print(df.head())
