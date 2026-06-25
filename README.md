@@ -39,14 +39,29 @@ The project was developed to:
 - Support healthcare research and patient-matching initiatives.
 - Demonstrate practical data engineering techniques using Python.
 
-## Technologies Used
+## Pipeline Architecture
 
-- Python
-- ClinicalTrials.gov API
-- MongoDB
-- JSON
-- Pandas
-- Data Engineering
+```mermaid
+flowchart TD
+    A[ClinicalTrials.gov API] --> B[Data Fetcher]
+    B --> C[JSON Parser]
+    C --> D[Data Cleaning & Normalization]
+    D --> E[Eligibility & Demographic Extraction]
+    E --> F[Structured Dataset]
+    F --> G[MongoDB]
+```
+The pipeline automates the retrieval and transformation of Neurofibromatosis clinical trial data from the ClinicalTrials.gov API. Raw JSON responses are parsed, cleaned, and normalized before extracting eligibility criteria and demographic attributes. The processed data is then stored in MongoDB, producing structured datasets suitable for healthcare research, patient matching, and downstream analytics.
+
+## Technology Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Programming Language | Python |
+| Data Source | ClinicalTrials.gov API |
+| Database | MongoDB |
+| Data Processing | Pandas |
+| Data Format | JSON |
+| Version Control | Git, GitHub |
 
 ## Key Features
 
