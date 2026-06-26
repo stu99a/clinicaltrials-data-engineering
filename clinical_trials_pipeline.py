@@ -990,22 +990,28 @@ if __name__ == "__main__":
 
     # === CSV Output === 
     df.to_csv("clinical_trials_parsed.csv", index=False)
-    print("Saved to clinical_trials_parsed.csv")
 
-    # === MongoDB Output ===
-    # Upserts the parsed clinical trials data into MongoDB 
-    #MONGO_URI = os.getenv("MONGO_URI")  # Ensure this is set in your environment
-    #mongo = MongoWriter(
-        #uri=MONGO_URI,
-        #db_name="iHealth_Dev",
-        #collection_name="Clinical Trial-Output"
-   #)
+    print("\nCSV export completed successfully!")
 
-    #mongo.upsert_trials(parsed_trials)
+    print(f"Studies retrieved : {len(raw_trials)}")
+    print(f"Studies processed : {len(parsed_trials)}")
+    print(f"Columns generated : {len(df.columns)}")
+    print("Output file       : clinical_trials_parsed.csv")
 
-    print("\nPipeline completed successfully!")
-    print(f"Studies retrieved: {len(raw_trials)}")
-    print(f"Columns generated: {len(df.columns)}")
-    print(f"Output file: clinical_trials_parsed.csv\n")
+    # === Optional MongoDB Output ===
+    ENABLE_MONGODB = False
+
+    if ENABLE_MONGODB:
+        MONGO_URI = os.getenv("MONGO_URI")
+
+        mongo = MongoWriter(
+            uri=MONGO_URI,
+            db_name="iHealth_Dev",
+            collection_name="Clinical Trial-Output"
+        )
+
+        mongo.upsert_trials(parsed_trials)
+    else:
+        print("MongoDB upload disabled.")
 
     print(df.head())
